@@ -7,7 +7,7 @@ variable "resource_group_name" {
 variable "virtual_network_name" {
   description = "Virtual network name."
   type        = string
-  default     = "paperchase-vnet"
+  default     = "pc-vnet"
 }
 
 variable "region" {
@@ -19,7 +19,7 @@ variable "region" {
 variable "keyvault_name" {
   description = "Name of the Key Vault."
   type        = string
-  default     = "paperchase-kv"
+  default     = "pc-kv"
 }
 
 variable "vm_size" {
