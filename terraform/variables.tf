@@ -4,6 +4,12 @@ variable "resource_group_name" {
   default     = "paperchase-rg"
 }
 
+variable "virtual_network_name" {
+  description = "Virtual network name."
+  type        = string
+  default     = "paperchase-vnet"
+}
+
 variable "region" {
   description = "Resource deployment location."
   type        = string

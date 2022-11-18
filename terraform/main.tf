@@ -20,9 +20,9 @@ resource "azurerm_resource_group" "rg" {
 }
 
 resource "azurerm_virtual_network" "vnet" {
-  name                = "paperchase-vnet"
+  name                = var.virtual_network_name
   address_space       = ["10.0.0.0/16"]
-  location            = "eastus2"
+  location            = var.region
   resource_group_name = var.resource_group_name
 }
 
