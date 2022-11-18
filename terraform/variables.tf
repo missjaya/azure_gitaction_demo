@@ -19,7 +19,7 @@ variable "region" {
 variable "keyvault_name" {
   description = "Name of the Key Vault."
   type        = string
-  default     = "pc-kv"
+  default     = "pc-kv07693"
 }
 
 variable "vm_size" {
