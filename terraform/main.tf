@@ -84,9 +84,14 @@ resource "azurerm_key_vault_secret" "cred" {
   expiration_date = var.key_vault_secret_expiration_date
 
   depends_on = [
-    var.keyvault_name
+    var.keyvault_name,
   ]
 
+}
+
+resource "random_password" "cred" {
+  length  = 16
+  special = true
 }
 
 resource "azurerm_network_interface" "paperchasewinnic" {
@@ -95,7 +100,7 @@ resource "azurerm_network_interface" "paperchasewinnic" {
   resource_group_name = var.resource_group_name
 
   depends_on = [
-    var.resource_group_name
+    var.resource_group_name,
   ]
 
   ip_configuration {
@@ -113,8 +118,8 @@ resource "azurerm_windows_virtual_machine" "paperchasewinvm" {
   resource_group_name        = var.resource_group_name
   location                   = var.region
   size                       = var.vm_size
-  admin_username             = "kpmgtestadmin"
-  admin_password             = azurerm_key_vault_secret.vmpassword.value
+  admin_username             = "nishu5673"
+  admin_password             = azurerm_key_vault_secret.cred.value
   allow_extension_operations = false
 
   network_interface_ids = [
@@ -143,9 +148,6 @@ resource "azurerm_windows_virtual_machine" "paperchasewinvm" {
 
 }
 
-resource "random_password" "vmpassword" {
-  length  = 16
-  special = true
-}
+
 
 
