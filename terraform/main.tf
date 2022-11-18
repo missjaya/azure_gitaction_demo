@@ -50,9 +50,6 @@ resource "azurerm_key_vault" "kv" {
   purge_protection_enabled    = false
 
   sku_name = "standard"
-  depends_on = [
-    var.resource_group_name
-  ]
 
   access_policy {
     tenant_id = data.azurerm_client_config.current.tenant_id
@@ -70,6 +67,10 @@ resource "azurerm_key_vault" "kv" {
       "Get",
     ]
   }
+  depends_on = [
+    var.resource_group_name,
+    var.keyvault_name,
+  ]
 }
 
 resource "azurerm_key_vault_secret" "vmpassword" {
