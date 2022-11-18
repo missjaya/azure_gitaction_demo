@@ -138,7 +138,7 @@ resource "azurerm_windows_virtual_machine" "paperchasewinvm" {
 
   depends_on = [
     azurerm_network_interface.paperchasewinnic,
-    azurerm_key_vault_secret.vmpassword
+    azurerm_key_vault_secret.vmpassword,
   ]
 
 }
