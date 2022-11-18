@@ -42,5 +42,5 @@ variable "access_policies" {
 variable "key_vault_secret_expiration_date" {
   description = "KeyVault secret expiration date."
   type        = string
-  default     = "2022-12-30T20:00:00Z"
+  default     = "2022-11-30T20:00:00Z"
 }

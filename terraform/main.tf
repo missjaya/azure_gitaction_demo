@@ -25,7 +25,7 @@ resource "azurerm_virtual_network" "vnet" {
   location            = var.region
   resource_group_name = var.resource_group_name
   depends_on = [
-    var.resource_group_name,
+    azurerm_resource_group.rg,
   ]
 }
 
@@ -76,9 +76,9 @@ resource "azurerm_key_vault" "kv" {
 
 }
 
-resource "azurerm_key_vault_secret" "vmpassword" {
-  name            = "vmpassword"
-  value           = random_password.vmpassword.result
+resource "azurerm_key_vault_secret" "cred" {
+  name            = "vmcred"
+  value           = random_password.cred.result
   key_vault_id    = azurerm_key_vault.kv.id
   content_type    = "text/plain"
   expiration_date = var.key_vault_secret_expiration_date
